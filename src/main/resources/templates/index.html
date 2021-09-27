@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Exchange rates</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<form th:action="@{/usd}" th:object="${datesForm}" method="post">
+    <h2>USD exchange rate</h2>
+    <h3>Choose period: </h3>
+    <table>
+        <tr>
+            <td><label>Start date: </label></td>
+            <td><input type="date" th:field="*{startDate}"/></td>
+            <td th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">Stare date error</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Search"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

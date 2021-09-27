@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head>
+    <title>Exchange rates</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Ask</th>
+        <th>Ask difference</th>
+        <th>Bid</th>
+        <th>Bid difference</th>
+    </tr>
+
+    <tr th:each="rate: ${rates}">
+        <td th:text="${rate.effectiveDate}"></td>
+        <td th:text="${rate.ask}"></td>
+        <td th:style="${rate.getAskDifference() == 0 ? 'color:black' : (rate.getAskDifference() > 0 ? 'color:green' : 'color:red')}"
+            th:text="${rate.getAskDifference()}"></td>
+        <td th:text="${rate.bid}"></td>
+        <td th:style="${rate.getBidDifference() == 0 ? 'color:black' : (rate.getBidDifference() > 0 ? 'color:green' : 'color:red')}"
+            th:text="${rate.getBidDifference()}"></td>
+    </tr>
+</table>
+</body>
+</html>
+
+<style>
+    table, th, td {
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
